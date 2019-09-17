@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sprint2-http-cow
+  name: sprint2-http-horse
 spec:
   selector:
-    kind: httpd-cow
+    kind: httpd-horse
   ports:
     - protocol: TCP
       port: 80
@@ -15,10 +15,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sprint2-nginx-horse
+  name: sprint2-nginx-cow
 spec:
   selector:
-    kind: nginx-horse
+    kind: nginx-cow
   ports:
     - protocol: TCP
       port: 80
@@ -41,16 +41,16 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-sprint2-http-cow
+  name: deploy-sprint2-http-horse
 spec:
   replicas: 2
   selector:
     matchLabels:
-      kind: pod-sprint2-http-cow
+      kind: pod-sprint2-http-horse
   template:
     metadata:
       labels:
-        kind: pod-sprint2-http-cow
+        kind: pod-sprint2-http-horse
     spec:
       containers:
       - name: httpd
@@ -61,16 +61,16 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-sprint2-nginx-horse
+  name: deploy-sprint2-nginx-cow
 spec:
   replicas: 2
   selector:
     matchLabels:
-      kind: pod-sprint2-nginx-horse
+      kind: pod-sprint2-nginx-cow
   template:
     metadata:
       labels:
-        kind: pod-sprint2-nginx-horse
+        kind: pod-sprint2-nginx-cow
     spec:
       containers:
         - name: nginx
