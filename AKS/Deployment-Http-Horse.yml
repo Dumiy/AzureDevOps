@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-sprint2-http-horse
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      kind: pod-sprint2-http-horse
+  template:
+    metadata:
+      labels:
+        kind: pod-sprint2-http-horse
+    spec:
+      containers:
+      - name: httpd
+        image: sprint2projectcr.azurecr.io/httpd_docker_horse:1.0
+        ports:
+        - containerPort: 80
