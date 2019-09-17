@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-sprint2-nginx-whale
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      kind: pod-sprint2-nginx-whale
+  template:
+    metadata:
+      labels:
+        kind: pod-sprint2-nginx-whale
+    spec:
+      containers:
+        - name: nginx
+          image: sprint2projectcr.azurecr.io/nginx_docker_whale:1.0
+          ports:
+            - containerPort: 80
